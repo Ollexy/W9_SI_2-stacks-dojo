@@ -2,11 +2,15 @@
 #include <iostream>
 
 void Stack::size(){
-    std::cout << "Size of stack: " << rozmiar << std::endl;
+    std::cout << "Size of stack: " << sizeOfArr << std::endl;
+}
+
+Stack::~Stack(){
+    delete arr;
 }
 
 bool Stack::push(int x){
-    if (top < rozmiar) {
+    if (top < sizeOfArr) {
         arr[top] = x;
         top++;
         std::cout << "Number " << x << " added\n";
@@ -29,19 +33,17 @@ bool Stack::pop(){
         std::cout << "Stack underflow\n";
         return false;
     }
-
 }
 
-void Stack::emptySpace()
-{
+void Stack::emptySpace(){
     if (top < 1)
-        std::cout << "Empty space: " << rozmiar << std::endl;
+        std::cout << "Empty space: " << sizeOfArr << std::endl;
     else
-        std::cout << "Empty space: " << rozmiar - top << std::endl;
+        std::cout << "Empty space: " << sizeOfArr - top << std::endl;
 }
 
 int Stack::peek(){
-    if (top <= 0) {
+    if (top < 1) {
         std::cout << "Stack is empty\n";
         return 0;
     }
@@ -51,24 +53,12 @@ int Stack::peek(){
     }
 }
 
-bool Stack::isEmpty(){
-    if (top < 1) {
-        std::cout << "STACK EMPTY\n";
-        return true;
-    }
-    else {
-        std::cout << "STACK NOT EMPTY\n";
-        return false;
-    } 
-}
-
-Stack::Stack(int nn) :rozmiar{ nn }, top{ 0 } {
-    for (size_t i = 0; i < rozmiar; i++)
+Stack::Stack(int nn) :sizeOfArr{ nn }, top{ 0 } {
+    for (size_t i = 0; i < sizeOfArr; i++)
         arr[i] = 0;
 }
 
-void Stack::menu (int x )
-{
+void Stack::menu (int x ){
     while (1) {
         std::cout << "\n1. PUSH\n";
         std::cout << "2. POP\n";
@@ -83,7 +73,7 @@ void Stack::menu (int x )
 
         switch (choice) {
         case 1:
-            std::cout << "Enter number you want to pushh to stack: ";
+            std::cout << "Enter number you want to push to stack: ";
             std::cin >> numToAdd;
             push(numToAdd);
             break;

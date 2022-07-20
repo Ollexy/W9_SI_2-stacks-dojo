@@ -2,16 +2,16 @@
 
 class Stack
 {
-	int rozmiar;
-	int* arr = new int[rozmiar];
+	int sizeOfArr;
+	int* arr = new int[sizeOfArr];
 	int top;
 public:
 	void size();
 	Stack(int nn);
+	~Stack();
 	bool push(int x);
 	bool pop();
 	int peek();
-	bool isEmpty();
 	void emptySpace();
 	void menu(int x);
 };
