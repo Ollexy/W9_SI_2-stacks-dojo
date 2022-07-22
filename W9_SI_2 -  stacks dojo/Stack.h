@@ -14,5 +14,6 @@ public:
 	int peek();
 	void emptySpace();
 	void menu(int x);
+	bool testValueInIndex(int index, int value);
 };
 

@@ -65,10 +65,11 @@ void Stack::menu (int x ){
         std::cout << "3. PEEK\n";
         std::cout << "4. SIZE\n";
         std::cout << "5. EMPTY SPACE\n";
+        std::cout << "6. TEST EXPECTED VALUE\n";
         std::cout << "6. EXIT\n\n";
         std::cout << "Choose option: ";
 
-        int choice, numToAdd;
+        int choice, numToAdd, numberOfIndex, value;
         std::cin >> choice;
 
         switch (choice) {
@@ -90,8 +91,26 @@ void Stack::menu (int x ){
             emptySpace();
             break;
         case 6:
+            std::cout << "Enter number of index: ";
+            std::cin >> numberOfIndex;
+            std::cout << "Enter value expected in index: ";
+            std::cin >> value;
+            testValueInIndex(numberOfIndex, value);
+            break;
+        case 7:
             exit(0);
             break;
         }
     }    
+}
+
+bool Stack::testValueInIndex(int index, int value){
+    if (arr[index] == value) {
+        std::cout << "Your value is equal to expected one." << std::endl << std::endl;
+        return true;
+    }    
+    else {
+        std::cout << "Your value is not equal to expected one." << std::endl << std::endl;
+        return false;
+    }      
 }
